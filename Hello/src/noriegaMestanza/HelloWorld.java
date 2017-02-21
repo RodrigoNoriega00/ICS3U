@@ -8,8 +8,8 @@ package noriegaMestanza;
 public class HelloWorld {
 
 	public static void main(String[] args) {
-		System.out.println("Hello,World!");
-
+		System.out.println("Hello,Donald Trump!");
+		System.out.println("You are doomed to fail");
 	}
 
 }
