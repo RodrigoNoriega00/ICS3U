@@ -21,7 +21,7 @@ public class NewLife {
 
 	public static void main(String[] args) {
 		// First part of program
-		char[][] newLife = new char[20][20];
+
 		char[][] array = new char[20][20];
 
 		System.out.print("This is the game of life.");
@@ -42,9 +42,17 @@ public class NewLife {
 			array[x][y] = 'X';
 			// sets selected cells to equal x
 		}
+		String again ="Y";
+		while(again.equalsIgnoreCase("Y")){
+			print(array);// prints array
+			System.out.println("Do you want to play another day?(Y/N)");
+			 again = scan.nextLine();
+			if(again.equalsIgnoreCase("Y")){
+				alive(array);
+			}
+		}
+		System.out.println("Thanks for playing =)");
 
-		print(array);// prints array
-		System.out.println("Do you want to play another day?(Y/N)");
 
 	}
 
@@ -70,24 +78,34 @@ public class NewLife {
 	 * }
 	 */
 
-	public static char[][] alive(char[][] array) {
-
+	public static void alive(char[][] array) {
+		char[][] newLife = new char[20][20];
 		for (int x = 0; x < 20; x++) {
 			for (int y = 0; y < 20; y++) {
 				if (array[x][y] == 'X') {
 					if (rules(array, x, y) == 2 || rules(array, x, y) == 3) {
-						array[x][y] = 'X';
+						newLife[x][y] = 'X';
 					}
+					else{
+						newLife[x][y]='O';
+					}
+
 				} else if (array[x][y] == 'O') {
 					if (rules(array, x, y) == 3) {
-						array[x][y] = 'X';
+						newLife[x][y] = 'X';
 					} else {
-						array[x][y] = 'O';
+						newLife[x][y] = 'O';
 					}
 				}
 			}
 		}
-		return array;
+		//put newLife array into array array
+		for(int x=0;x<20;x++){
+			for (int y=0;y<20;y++){
+				array[x][y]=newLife[x][y];
+			}
+		}
+		
 	}
 
 	public static char rules(char[][] grid, int r, int c) {
